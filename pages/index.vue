@@ -1,6 +1,12 @@
 <!-- pages/index.vue -->
 <script>
-import { ref, reactive, onMounted } from 'vue'
+
+import {
+  ref,
+  reactive,
+  onMounted,
+} from 'vue'
+
 import GitHubCodespacesEmbed from '~/components/GitHubCodespacesEmbed.vue'
 import PaymentComponent from '~/components/PaymentComponent.vue'
 import envGetters from '~/utils/envGetters.js'
@@ -20,14 +26,32 @@ export default {
     const githubCodespaceName = ref('')
 
     const aiSteps = reactive([
-      { id: 'step1', title: 'DB Design', icon: 'database', url: envGetters.AI_STEP_1_URL },
-      { id: 'step2', title: 'API Design', icon: 'sitemap', url: envGetters.AI_STEP_2_URL },
-      { id: 'step3', title: 'Model', icon: 'cubes', url: envGetters.AI_STEP_3_URL },
-      { id: 'step4', title: 'Migration', icon: 'exchange-alt', url: envGetters.AI_STEP_4_URL },
-      { id: 'step5', title: 'Seeder', icon: 'seedling', url: envGetters.AI_STEP_5_URL },
-      { id: 'step6', title: 'API Implementation', icon: 'code', url: envGetters.AI_STEP_6_URL },
-      { id: 'step7', title: 'Unit Test', icon: 'vial', url: envGetters.AI_STEP_7_URL },
+      { id: 'step1', title: 'DB Design', icon: 'database', url: null },
+      { id: 'step2', title: 'API Design', icon: 'sitemap', url: null },
+      { id: 'step3', title: 'Model', icon: 'cubes', url: null },
+      { id: 'step4', title: 'Migration', icon: 'exchange-alt', url: null },
+      { id: 'step5', title: 'Seeder', icon: 'seedling', url: null },
+      { id: 'step6', title: 'API Implementation', icon: 'code', url: null },
+      { id: 'step7', title: 'Unit Test', icon: 'vial', url: null },
     ])
+
+    onMounted(() => {
+      const setStepUrl = (index, url) => {
+        if (url !== null) {
+          aiSteps[index].url = url
+        } else {
+          console.warn(`URL for step ${index + 1} is not available`)
+        }
+      }
+
+      setStepUrl(0, envGetters.AI_STEP_1_URL)
+      setStepUrl(1, envGetters.AI_STEP_2_URL)
+      setStepUrl(2, envGetters.AI_STEP_3_URL)
+      setStepUrl(3, envGetters.AI_STEP_4_URL)
+      setStepUrl(4, envGetters.AI_STEP_5_URL)
+      setStepUrl(5, envGetters.AI_STEP_6_URL)
+      setStepUrl(6, envGetters.AI_STEP_7_URL)
+    })
 
     /**
      * @param tabId
