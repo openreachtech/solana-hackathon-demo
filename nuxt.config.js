@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   // Nuxt App configuration: https://nuxt.com/docs/api/nuxt-config#app.
   app: {
     head: {
-      title: 'furo-boilerplate',
+      title: 'AI-Powered SaaS Platform for Accelerated Software Development',
       htmlAttrs: {
         lang: 'en',
       },
@@ -26,6 +26,10 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        {
+          rel: 'stylesheet',
+          href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css',
+        },
       ],
     },
   },

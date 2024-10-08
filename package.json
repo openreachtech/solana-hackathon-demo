@@ -1,7 +1,7 @@
 {
-  "name": "@openreachtech/furo-boilerplate-nuxt",
+  "name": "@openreachtech/solana-hackathon-demo",
   "version": "0.0.0",
-  "description": "furo boilerplate for Nuxt as starting to develop frontend",
+  "description": "solana hackathon demo site",
   "main": "index.js",
   "scripts": {
     "build": "nuxt build",

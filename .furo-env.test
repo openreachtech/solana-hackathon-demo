@@ -1,2 +1,7 @@
-ENDPOINT_URL = http://localhost:3900/graphql-stub
-TEST_MESSAGE = 'I am .furo-env.test'
+AI_STEP_1_URL=
+AI_STEP_2_URL=
+AI_STEP_3_URL=
+AI_STEP_4_URL=
+AI_STEP_5_URL=
+AI_STEP_6_URL=
+AI_STEP_7_URL=
