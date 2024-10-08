@@ -11,11 +11,9 @@ export default {
     const totalPayment = ref('12.75')
 
     const {
-      wallet,
       publicKey,
       isConnected,
       connect,
-      disconnect,
     } = usePhantomWallet()
 
     const truncatedPublicKey = computed(() => {
@@ -27,14 +25,18 @@ export default {
     })
 
     /**
+     * Connects the wallet using the usePhantomWallet composable
      *
+     * @returns {Promise<void>}
      */
     async function connectWallet () {
       await connect()
     }
 
     /**
+     * Processes the payment after ensuring wallet connection
      *
+     * @returns {Promise<void>}
      */
     async function payNow () {
       if (!isConnected.value) {
@@ -44,7 +46,7 @@ export default {
       if (isConnected.value) {
         // Here you would typically interact with a smart contract or backend API
         // to process the payment. For this example, we'll just log a message.
-        console.log(`Processing payment of ${totalPayment.value} USDC`)
+        // eslint-disable-next-line no-alert
         alert(`Payment of ${totalPayment.value} USDC processed successfully!`)
       }
     }

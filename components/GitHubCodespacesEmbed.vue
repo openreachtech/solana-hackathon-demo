@@ -21,14 +21,16 @@ export default {
   setup (props) {
     const isAuthenticated = ref(false)
     const codespaceUrl = ref('')
-    const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${process.env.VUE_APP_GITHUB_CLIENT_ID}&scope=codespace`
+    const githubAuthUrl = 'https://github.com/login/oauth/authorize?client_id=sample_id&scope=codespace'
 
     onMounted(() => {
       checkAuthentication()
     })
 
     /**
+     * Checks if the user is authenticated with GitHub
      *
+     * @returns {void}
      */
     function checkAuthentication () {
       // In a real application, you would check if the user is authenticated with GitHub
