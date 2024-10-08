@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   // Nuxt App configuration: https://nuxt.com/docs/api/nuxt-config#app.
   app: {
     head: {
-      title: 'furo-boilerplate',
+      title: 'AI-Powered SaaS Platform for Accelerated Software Development',
       htmlAttrs: {
         lang: 'en',
       },
