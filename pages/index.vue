@@ -1,6 +1,5 @@
 <!-- pages/index.vue -->
 <script>
-
 import {
   ref,
   reactive,
@@ -37,9 +36,10 @@ export default {
 
     onMounted(() => {
       const setStepUrl = (index, url) => {
-        if (url !== null) {
+        if (url) {
           aiSteps[index].url = url
         } else {
+          // eslint-disable-next-line no-console
           console.warn(`URL for step ${index + 1} is not available`)
         }
       }
@@ -54,41 +54,53 @@ export default {
     })
 
     /**
-     * @param tabId
+     * Sets the active main tab
+     *
+     * @param {string} tabId - The ID of the tab to set as active
      */
     function setActiveMainTab (tabId) {
       activeMainTab.value = tabId
     }
 
     /**
-     * @param stepId
+     * Sets the active AI step
+     *
+     * @param {string} stepId - The ID of the step to set as active
      */
     function setActiveAIStep (stepId) {
       activeAIStep.value = stepId
     }
 
     /**
-     * @param tab
+     * Gets the icon for a given tab
+     *
+     * @param {string} tab - The tab ID
+     * @returns {string} The icon class for the tab
      */
     function getTabIcon (tab) {
-      switch (tab) {
-        case 'ai-steps': return 'fa-robot'
-        case 'editor': return 'fa-code'
-        case 'payment': return 'fa-credit-card'
-        default: return 'fa-question'
+      const iconMap = {
+        'ai-steps': 'fa-robot',
+        editor: 'fa-code',
+        payment: 'fa-credit-card',
       }
+
+      return iconMap[tab] || 'fa-question'
     }
 
     /**
-     * @param tab
+     * Gets the label for a given tab
+     *
+     * @param {string} tab - The tab ID
+     * @returns {string} The label for the tab
      */
     function getTabLabel (tab) {
-      switch (tab) {
-        case 'ai-steps': return 'AI Steps'
-        case 'editor': return 'Editor'
-        case 'payment': return 'Payment'
-        default: return 'Unknown'
+      const labelMap = {
+        'ai-steps': 'AI Steps',
+        editor: 'Editor',
+        payment: 'Payment',
       }
+
+      return labelMap[tab] || 'Unknown'
     }
 
     return {
