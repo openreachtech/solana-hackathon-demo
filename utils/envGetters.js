@@ -13,8 +13,6 @@ const getEnvValue = key => {
 
     return furoEnv[key] ?? null // 値が undefined の場合も null を返す
   } catch (error) {
-    console.error(`Error parsing FURO_ENV for key ${key}:`, error)
-
     return null
   }
 }

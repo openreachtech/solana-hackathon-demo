@@ -1,7 +1,9 @@
 import { ref, onMounted } from 'vue'
 
 /**
+ * Custom composable for managing Phantom wallet connection
  *
+ * @returns {object} An object containing wallet connection methods and state
  */
 export function usePhantomWallet () {
   const wallet = ref(null)
@@ -15,7 +17,9 @@ export function usePhantomWallet () {
   })
 
   /**
+   * Connects to the Phantom wallet
    *
+   * @returns {Promise<void>}
    */
   async function connect () {
     try {
@@ -24,17 +28,18 @@ export function usePhantomWallet () {
 
         return
       }
-
       const response = await wallet.value.connect()
       publicKey.value = response.publicKey.toString()
       isConnected.value = true
     } catch (error) {
-      console.error('Failed to connect to Phantom wallet:', error)
+      throw new Error('Failed to connect to Phantom wallet')
     }
   }
 
   /**
+   * Disconnects from the Phantom wallet
    *
+   * @returns {Promise<void>}
    */
   async function disconnect () {
     if (wallet.value) {
@@ -45,7 +50,6 @@ export function usePhantomWallet () {
   }
 
   return {
-    wallet,
     publicKey,
     isConnected,
     connect,
